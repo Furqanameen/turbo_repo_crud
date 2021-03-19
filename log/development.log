@@ -1,0 +1,155 @@
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20210107234144)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210107234144"]]
+  [1m[36mTRANSACTION (14.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-19 14:48:29.516889"], ["updated_at", "2021-03-19 14:48:29.516889"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-03-19 19:48:59 +0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /root/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /root/.rvm/gems/ruby-2.7.2/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.2ms | Allocations: 400)
+Completed 200 OK in 23ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 3508)
+
+
+Started GET "/posts" for ::1 at 2021-03-19 19:49:08 +0500
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_modal_form.html.erb (Duration: 0.4ms | Allocations: 129)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:50
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1713)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /root/rails/turbo_modal-master/public/packs
+[Webpacker] Hash: 868df395ca07cf58c9eb
+Version: webpack 4.44.2
+Time: 26524ms
+Built at: 19/03/2021 19:49:36
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-57f5d2a4ddcdd8b4d2c4.js   6.79 MiB  application  [emitted] [immutable]  application
+js/application-57f5d2a4ddcdd8b4d2c4.js.map   7.15 MiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-57f5d2a4ddcdd8b4d2c4.js js/application-57f5d2a4ddcdd8b4d2c4.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/controllers sync recursive _controller\.js$] ./app/javascript/controllers sync _controller\.js$ 221 bytes {application} [built]
+[./app/javascript/controllers/index.js] 490 bytes {application} [built]
+[./app/javascript/controllers/post_form_controller.js] 3.07 KiB {application} [optional] [built]
+[./app/javascript/controllers/post_modal_controller.js] 4.29 KiB {application} [optional] [built]
+[./app/javascript/packs/application.js] 485 bytes {application} [built]
+[./app/javascript/stylesheets/application.scss] 664 bytes {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./app/javascript/stylesheets/application.scss 6.57 MiB {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 46 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 28439.5ms | Allocations: 42336)
+Completed 200 OK in 28447ms (Views: 28442.6ms | ActiveRecord: 0.2ms | Allocations: 44038)
+
+
+Started GET "/posts/new" for ::1 at 2021-03-19 19:50:20 +0500
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb
+  Rendered posts/_form.html.erb (Duration: 25.5ms | Allocations: 7238)
+  Rendered posts/new.html.erb (Duration: 26.4ms | Allocations: 7581)
+Completed 200 OK in 35ms (Views: 27.1ms | ActiveRecord: 0.7ms | Allocations: 10884)
+
+
+Started POST "/posts" for ::1 at 2021-03-19 19:50:27 +0500
+Processing by PostsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"Rg6DuWwlrZ0Tf0WUOS1n38IpVfkmWQWfQJMeO8B3U48UYFMsWQQRgzgBq-m_qwF1LMMXfukdSibuRjD6MlnENQ", "post"=>{"title"=>"jhk", "body"=>"jjk"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:24:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "jhk"], ["body", "jjk"], ["created_at", "2021-03-19 14:50:27.514053"], ["updated_at", "2021-03-19 14:50:27.514053"]]
+  ↳ app/controllers/posts_controller.rb:24:in `block in create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:24:in `block in create'
+Redirected to http://localhost:3001/posts
+Completed 302 Found in 20ms (ActiveRecord: 10.2ms | Allocations: 3755)
+
+
+Started GET "/posts" for ::1 at 2021-03-19 19:50:27 +0500
+Processing by PostsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_modal_form.html.erb (Duration: 0.1ms | Allocations: 25)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:50
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 1291)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 6876)
+Completed 200 OK in 23ms (Views: 21.7ms | ActiveRecord: 0.2ms | Allocations: 7268)
+
+
+Started GET "/posts/new" for ::1 at 2021-03-19 19:50:27 +0500
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb
+  Rendered posts/_form.html.erb (Duration: 2.5ms | Allocations: 1097)
+  Rendered posts/new.html.erb (Duration: 4.1ms | Allocations: 2295)
+Started GET "/posts" for ::1 at 2021-03-19 19:50:27 +0500
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 2668)
+
+
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_modal_form.html.erb (Duration: 0.0ms | Allocations: 25)
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:50
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1130)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 7156)
+Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.1ms | Allocations: 7469)
+
+
+Started GET "/posts/new" for ::1 at 2021-03-19 19:50:32 +0500
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb
+  Rendered posts/_form.html.erb (Duration: 2.2ms | Allocations: 1099)
+  Rendered posts/new.html.erb (Duration: 2.6ms | Allocations: 1189)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 1425)
+
+
+Started POST "/posts" for ::1 at 2021-03-19 19:50:38 +0500
+Processing by PostsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"l0yew6RBWJOI5h9z5LVmkWDfOOtmBg3TkEKgjjfzCBXFIk5WkWDkjaOY8Q5iMwA7jjV6bKlCQmo-l45Pxd2frw", "post"=>{"title"=>"hjkj", "body"=>"kjkl"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:24:in `block in create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "hjkj"], ["body", "kjkl"], ["created_at", "2021-03-19 14:50:38.499158"], ["updated_at", "2021-03-19 14:50:38.499158"]]
+  ↳ app/controllers/posts_controller.rb:24:in `block in create'
+  [1m[36mTRANSACTION (15.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:24:in `block in create'
+Redirected to http://localhost:3001/posts
+Completed 302 Found in 22ms (ActiveRecord: 16.0ms | Allocations: 3521)
+
+
+Started GET "/posts" for ::1 at 2021-03-19 19:50:38 +0500
+Processing by PostsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/_modal_form.html.erb (Duration: 0.1ms | Allocations: 25)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:50
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1199)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 6713)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.2ms | Allocations: 6993)
+
+
+Started GET "/posts/new" for ::1 at 2021-03-19 19:50:38 +0500
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb
+  Rendered posts/_form.html.erb (Duration: 1.5ms | Allocations: 1107)
+  Rendered posts/new.html.erb (Duration: 1.7ms | Allocations: 1197)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 1433)
+
+
